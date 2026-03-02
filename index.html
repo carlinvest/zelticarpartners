@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zelticar Partners | Intermediación Financiera</title>
+    <title>Zelticar Partners | Intermediación Financiera Digital</title>
     <style>
         :root {
             --azul-oscuro: #003366;
             --dorado: #c5a059;
             --azul-claro: #f4f7f9;
             --texto: #333333;
+            --negro-terminal: #1a1e23;
             --blanco: #ffffff;
         }
         * { box-sizing: border-box; }
@@ -32,14 +33,9 @@
             top: 0;
             z-index: 1000;
         }
-        .logo { font-weight: bold; font-size: 1.4rem; color: var(--azul-oscuro); text-transform: uppercase; }
-        .nav-links a {
-            text-decoration: none;
-            color: var(--azul-oscuro);
-            margin-left: 15px;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
+        .logo { font-weight: bold; font-size: 1.4rem; color: var(--azul-oscuro); text-transform: uppercase; letter-spacing: 1px; }
+        .nav-links a { text-decoration: none; color: var(--azul-oscuro); margin-left: 15px; font-weight: 600; font-size: 0.9rem; }
+        
         .hero {
             padding: 80px 8%;
             background: var(--blanco);
@@ -49,31 +45,36 @@
             gap: 40px;
         }
         .hero-text { flex: 1; min-width: 300px; }
-        .hero-text h1 { color: var(--azul-oscuro); font-size: 2.5rem; margin-bottom: 20px; }
-        .hero-img { flex: 1; min-width: 300px; border-radius: 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .hero-text h1 { color: var(--azul-oscuro); font-size: 2.6rem; margin-bottom: 20px; line-height: 1.1; }
+        .hero-img { flex: 1; min-width: 300px; border-radius: 12px; box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
         
-        .services { padding: 60px 8%; background: #ebf0f3; }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .card { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-
-        .market-section { padding: 60px 8%; text-align: center; }
-        .terminal-box { max-width: 900px; margin: 20px auto; background: #131722; border-radius: 8px; padding: 10px; }
-
-        /* SECCIÓN LEGAL REQUERIDA POR PASARELA */
-        .legal-section {
-            padding: 80px 8% 40px 8%;
-            background: #f9f9f9;
-            border-top: 1px solid #ddd;
-            font-size: 0.85rem;
+        .market-section { padding: 80px 8%; background: #ebf0f3; text-align: center; }
+        
+        .crypto-card {
+            max-width: 500px;
+            margin: 40px auto;
+            background: var(--negro-terminal);
+            padding: 30px;
+            border-radius: 20px;
+            color: white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border: 1px solid var(--dorado);
         }
-        .legal-container { max-width: 900px; margin: 0 auto; color: #555; }
-        .legal-container h2 { color: var(--azul-oscuro); border-bottom: 2px solid var(--dorado); padding-bottom: 10px; }
-        .legal-container h3 { color: var(--azul-oscuro); margin-top: 25px; font-size: 1rem; }
-        .legal-box { background: white; padding: 20px; border: 1px solid #eee; border-radius: 5px; margin-top: 10px; }
-
-        footer { background: var(--azul-oscuro); color: white; text-align: center; padding: 30px; font-size: 0.9rem; }
+        .crypto-card h3 { color: var(--dorado); margin-top: 0; font-size: 1.5rem; }
+        .input-group { margin-bottom: 20px; text-align: left; }
+        .input-group label { display: block; font-size: 0.8rem; color: #888; margin-bottom: 5px; text-transform: uppercase; }
+        .input-wrapper { display: flex; background: #2c323a; border-radius: 10px; overflow: hidden; border: 1px solid #444; }
+        .input-wrapper input { flex: 1; background: transparent; border: none; color: white; padding: 15px; font-size: 1.2rem; outline: none; }
+        .input-wrapper select { background: #3d444e; border: none; color: var(--dorado); padding: 0 15px; font-weight: bold; cursor: pointer; }
         
-        @media (max-width: 768px) { .hero { text-align: center; } }
+        /* SECCIÓN LEGAL EXTENSA PARA PASARELA */
+        .legal-full { padding: 80px 8%; background: white; color: #444; font-size: 0.9rem; line-height: 1.8; }
+        .legal-container { max-width: 1000px; margin: 0 auto; text-align: justify; }
+        .legal-container h2 { color: var(--azul-oscuro); border-bottom: 2px solid var(--dorado); display: inline-block; margin-bottom: 30px; }
+        .legal-container h3 { color: var(--azul-oscuro); margin-top: 40px; text-transform: uppercase; font-size: 1.1rem; }
+        .legal-box-grey { background: #f8f9fa; padding: 25px; border-left: 4px solid var(--dorado); margin: 20px 0; border-radius: 4px; }
+
+        footer { background: var(--azul-oscuro); color: white; text-align: center; padding: 30px; font-size: 0.8rem; }
     </style>
 </head>
 <body>
@@ -82,88 +83,104 @@
         <div class="logo">Zelticar Partners</div>
         <div class="nav-links">
             <a href="#inicio">Inicio</a>
-            <a href="#servicios">Servicios</a>
             <a href="#mercado">Mercado</a>
-            <a href="#legal">Aviso Legal</a>
+            <a href="#legal">Términos y Condiciones</a>
         </div>
     </nav>
 
     <section class="hero" id="inicio">
         <div class="hero-text">
-            <h1>Intermediación Financiera Profesional</h1>
-            <p>Especialistas en la gestión de activos y consultoría estratégica para inversores particulares y empresas.</p>
-            <a href="mailto:zelticarpartners@gmail.com" style="background: var(--azul-oscuro); color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold;">Contactar ahora</a>
+            <h1>Expertos en Activos Digitales e Intermediación</h1>
+            <p>Gestionamos sus operaciones financieras con el rigor de la consultoría tradicional y la agilidad de los mercados cripto.</p>
+            <a href="mailto:zelticarpartners@gmail.com" style="background: var(--dorado); color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block;">Consultar Servicio</a>
         </div>
-        <img src="https://images.unsplash.com/photo-1454165833767-027ff330278a?auto=format&fit=crop&w=600&q=80" alt="Oficina Zelticar" class="hero-img">
-    </section>
-
-    <section class="services" id="servicios">
-        <h2 style="text-align:center; color: var(--azul-oscuro);">Nuestros Servicios</h2>
-        <div class="services-grid">
-            <div class="card">
-                <h3>Intermediación</h3>
-                <p>Facilitamos operaciones financieras complejas con total seguridad y transparencia.</p>
-            </div>
-            <div class="card">
-                <h3>Consultoría BTC</h3>
-                <p>Asesoramiento especializado en la gestión y custodia de activos digitales.</p>
-            </div>
-            <div class="card">
-                <h3>Gestión Documental</h3>
-                <p>Tramitación integral de expedientes y documentación financiera oficial.</p>
-            </div>
-        </div>
+        <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=800&q=80" alt="Tecnología Financiera Zelticar" class="hero-img">
     </section>
 
     <section class="market-section" id="mercado">
-        <h2>Monitor de Mercado</h2>
-        <div class="terminal-box">
-            <div id="tv-widget"></div>
+        <h2 style="color: var(--azul-oscuro)">Monitor de Activos y Conversor Cripto</h2>
+        
+        <div style="max-width:900px; margin: 0 auto 30px auto; border-radius:12px; overflow:hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+            <div id="tradingview_chart"></div>
             <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
             <script type="text/javascript">
                 new TradingView.widget({
                     "width": "100%", "height": 400, "symbol": "BINANCE:BTCEUR",
-                    "interval": "D", "timezone": "Europe/Madrid", "theme": "dark",
-                    "style": "1", "locale": "es", "container_id": "tv-widget"
+                    "interval": "D", "timezone": "Europe/Madrid", "theme": "light",
+                    "style": "1", "locale": "es", "container_id": "tradingview_chart"
                 });
             </script>
         </div>
+
+        <div class="crypto-card">
+            <h3>Calculadora de Activos</h3>
+            <div class="input-group">
+                <label>Tengo</label>
+                <div class="input-wrapper">
+                    <input type="number" id="inputVal" value="1" oninput="updateConvert()">
+                    <select id="inputCurr" onchange="updateConvert()">
+                        <option value="EUR">EUR</option>
+                        <option value="USD">USD</option>
+                        <option value="BTC">BTC</option>
+                        <option value="ETH">ETH</option>
+                        <option value="SOL">SOL</option>
+                    </select>
+                </div>
+            </div>
+            <div style="font-size: 1.5rem; margin-bottom: 20px;">⇅</div>
+            <div class="input-group">
+                <label>Recibo (Estimado)</label>
+                <div class="input-wrapper" style="background: #1e242c;">
+                    <input type="number" id="outputVal" readonly>
+                    <select id="outputCurr" onchange="updateConvert()">
+                        <option value="BTC" selected>BTC</option>
+                        <option value="ETH">ETH</option>
+                        <option value="SOL">SOL</option>
+                        <option value="EUR">EUR</option>
+                        <option value="USD">USD</option>
+                    </select>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section class="legal-section" id="legal">
+    <section class="legal-full" id="legal">
         <div class="legal-container">
-            <h2>Información Legal y Términos de Servicio</h2>
+            <h2>Condiciones Generales y Aviso Legal</h2>
             
-            <div class="legal-box">
-                <h3>1. Aviso Legal (Identidad del Titular)</h3>
-                <p>En cumplimiento de la Ley 34/2002 de Servicios de la Sociedad de la Información, se detallan los datos identificativos:</p>
+            <div class="legal-box-grey">
+                <h3>1. Información Legal (LSSI)</h3>
+                <p>De conformidad con la Ley 34/2002, de 11 de julio, de servicios de la sociedad de la información y de comercio electrónico, se informa que el titular de este sitio web es:</p>
                 <ul>
-                    <li><strong>Nombre del titular:</strong> PRIETO SANCHEZ CARLOS</li>
+                    <li><strong>Nombre completo:</strong> PRIETO SANCHEZ CARLOS</li>
                     <li><strong>NIF:</strong> 12323904K</li>
                     <li><strong>Dirección:</strong> Calle Arrabal 15, CP 47450, Pozal de Gallinas, Valladolid, España.</li>
-                    <li><strong>Email:</strong> zelticarpartners@gmail.com</li>
+                    <li><strong>Correo electrónico:</strong> zelticarpartners@gmail.com</li>
+                    <li><strong>Teléfono:</strong> [Añadir tu teléfono aquí si lo deseas]</li>
                 </ul>
-
-                <h3>2. Política de Envío y Entrega</h3>
-                <p>Los servicios prestados por Zelticar Partners son principalmente de consultoría e intermediación. En caso de requerir el envío físico de documentación:</p>
-                <ul>
-                    <li><strong>Transporte:</strong> Correos (Sociedad Estatal Correos y Telégrafos, S.A.).</li>
-                    <li><strong>Método:</strong> Correo ordinario o certificado.</li>
-                    <li><strong>Plazos:</strong> Según los tiempos estipulados por Correos (estimado 3-5 días hábiles en península).</li>
-                    <li><strong>Gastos:</strong> Los gastos de envío ordinario están incluidos en la tarifa del servicio contratado.</li>
-                </ul>
-
-                <h3>3. Cancelaciones, Devoluciones y Reembolsos</h3>
-                <p>De acuerdo con el Real Decreto Legislativo 1/2007 (Ley General para la Defensa de los Consumidores y Usuarios):</p>
-                <ul>
-                    <li><strong>Derecho de Desistimiento:</strong> El cliente tiene derecho a desistir del contrato en un plazo de 14 días naturales sin necesidad de justificación, siempre y cuando la prestación del servicio de consultoría o gestión no haya comenzado con su consentimiento expreso.</li>
-                    <li><strong>Procedimiento:</strong> Para solicitar una cancelación o reembolso, debe enviar un correo a zelticarpartners@gmail.com con sus datos de factura.</li>
-                    <li><strong>Reembolso:</strong> Se realizará por el mismo método de pago en un máximo de 14 días tras la aprobación de la solicitud.</li>
-                </ul>
-
-                <h3>4. Condiciones de Uso</h3>
-                <p>Zelticar Partners no se hace responsable del uso indebido de la información de mercado aquí expuesta. Los servicios de intermediación se rigen por contratos específicos firmados entre las partes.</p>
             </div>
+
+            <h3>2. Condiciones de Servicio</h3>
+            <p>Zelticar Partners ofrece servicios de intermediación financiera y consultoría técnica. El uso de este sitio web implica la aceptación de los presentes Términos y Condiciones. El titular se reserva el derecho a modificar la oferta comercial en cualquier momento.</p>
+
+            <h3>3. Política de Envíos y Plazos de Entrega</h3>
+            <p>En cumplimiento de la normativa vigente, se informa que la naturaleza de los productos o servicios que requieren envío físico (documentación oficial, contratos o expedientes) se gestionarán bajo las siguientes condiciones:</p>
+            <ul>
+                <li><strong>Empresa de transporte:</strong> Se utilizará el servicio de <strong>Correos</strong> (Sociedad Estatal Correos y Telégrafos, S.A.).</li>
+                <li><strong>Plazos de entrega:</strong> Los plazos serán los estipulados por Correos para el envío ordinario o certificado, habitualmente de <strong>3 a 5 días hábiles</strong> dentro del territorio nacional.</li>
+                <li><strong>Gastos de envío:</strong> Los gastos de gestión y envío están incluidos en la tarifa del servicio contratado, salvo que se especifique lo contrario expresamente en el presupuesto.</li>
+            </ul>
+
+            <h3>4. Cancelaciones, Devoluciones y Reembolsos</h3>
+            <p>De conformidad con el <strong>Real Decreto Legislativo 1/2007, de 16 de noviembre</strong>, por el que se aprueba el texto refundido de la Ley General para la Defensa de los Consumidores y Usuarios:</p>
+            <ul>
+                <li><strong>Derecho de desistimiento:</strong> El cliente dispone de 14 días naturales para desistir del contrato. No obstante, dicho derecho no será aplicable una vez que el servicio de consultoría o intermediación haya sido ejecutado o haya comenzado con el consentimiento expreso del consumidor.</li>
+                <li><strong>Cancelaciones:</strong> Podrá cancelar cualquier pedido o servicio solicitado antes de su inicio enviando un correo a zelticarpartners@gmail.com.</li>
+                <li><strong>Reembolsos:</strong> En caso de que proceda un reembolso, este se efectuará utilizando el mismo medio de pago empleado por el usuario en un plazo máximo de 14 días naturales tras la recepción y validación de la solicitud.</li>
+            </ul>
+
+            <h3>5. Protección de Datos</h3>
+            <p>Sus datos personales son tratados conforme al RGPD con la única finalidad de gestionar su consulta o el servicio solicitado. No se cederán datos a terceros salvo obligación legal.</p>
         </div>
     </section>
 
@@ -171,5 +188,8 @@
         <p>&copy; 2026 Zelticar Partners | PRIETO SANCHEZ CARLOS (12323904K) | Pozal de Gallinas, Valladolid.</p>
     </footer>
 
-</body>
-</html>
+    <script>
+        const cryptoRates = { EUR: 1, USD: 1.09, BTC: 0.000015, ETH: 0.00032, SOL: 0.0085 };
+        function updateConvert() {
+            const val = document.getElementById('inputVal').value;
+            const from = document
