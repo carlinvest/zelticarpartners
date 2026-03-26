@@ -7,6 +7,7 @@
     <style>
         :root {
             --azul-oscuro: #003366;
+            --azul-noche: #1e242c; 
             --dorado: #c5a059;
             --azul-claro: #f4f7f9;
             --texto: #333333;
@@ -22,19 +23,51 @@
             line-height: 1.6;
             scroll-behavior: smooth;
         }
+
+        /* CABECERA AZUL NOCHE / LETRAS DORADAS */
         nav {
-            background: var(--blanco);
-            padding: 15px 5%;
+            background: var(--azul-noche);
+            padding: 20px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             position: sticky;
             top: 0;
             z-index: 1000;
         }
-        .logo { font-weight: bold; font-size: 1.4rem; color: var(--azul-oscuro); text-transform: uppercase; letter-spacing: 1px; }
-        .nav-links a { text-decoration: none; color: var(--azul-oscuro); margin-left: 15px; font-weight: 600; font-size: 0.9rem; }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+        
+        .logo-img {
+            height: 60px; 
+            width: auto;
+            border-radius: 5px;
+        }
+
+        .logo-text {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--dorado);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dorado);
+            margin-left: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+        .nav-links a:hover { color: var(--blanco); }
         
         .hero {
             padding: 80px 8%;
@@ -46,28 +79,33 @@
         }
         .hero-text { flex: 1; min-width: 300px; }
         .hero-text h1 { color: var(--azul-oscuro); font-size: 2.6rem; margin-bottom: 20px; line-height: 1.1; }
-        .hero-img { flex: 1; min-width: 300px; border-radius: 12px; box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+        .hero-img { 
+            flex: 1; 
+            min-width: 300px; 
+            max-width: 600px;
+            border-radius: 12px; 
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2); 
+        }
         
         .market-section { padding: 80px 8%; background: #ebf0f3; text-align: center; }
         
         .crypto-card {
-            max-width: 500px;
+            max-width: 450px;
             margin: 40px auto;
-            background: var(--azul-terminal);
+            background: var(--azul-noche);
             padding: 30px;
             border-radius: 20px;
             color: white;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
             border: 1px solid var(--dorado);
         }
-        .crypto-card h3 { color: var(--dorado); margin-top: 0; font-size: 1.5rem; }
+        .crypto-card h3 { color: var(--dorado); margin-top: 0; font-size: 1.4rem; }
         .input-group { margin-bottom: 20px; text-align: left; }
         .input-group label { display: block; font-size: 0.8rem; color: #888; margin-bottom: 5px; text-transform: uppercase; }
         .input-wrapper { display: flex; background: #2c323a; border-radius: 10px; overflow: hidden; border: 1px solid #444; }
-        .input-wrapper input { flex: 1; background: transparent; border: none; color: white; padding: 15px; font-size: 1.2rem; outline: none; }
+        .input-wrapper input { flex: 1; background: transparent; border: none; color: white; padding: 15px; font-size: 1.2rem; outline: none; width: 100%; }
         .input-wrapper select { background: #3d444e; border: none; color: var(--dorado); padding: 0 15px; font-weight: bold; cursor: pointer; }
         
-        /* SECCIÓN LEGAL EXTENSA PARA PASARELA */
         .legal-full { padding: 80px 8%; background: white; color: #444; font-size: 0.9rem; line-height: 1.8; }
         .legal-container { max-width: 1000px; margin: 0 auto; text-align: justify; }
         .legal-container h2 { color: var(--azul-oscuro); border-bottom: 2px solid var(--dorado); display: inline-block; margin-bottom: 30px; }
@@ -80,7 +118,10 @@
 <body>
 
     <nav>
-        <div class="logo">Zelticar Partners</div>
+        <div class="logo-container">
+            <img src="IMG-20260326-WA0001.jpg" alt="Logo Zelticar Partners" class="logo-img">
+            <div class="logo-text">Zelticar Partners</div>
+        </div>
         <div class="nav-links">
             <a href="#inicio">Inicio</a>
             <a href="#mercado">Mercado</a>
@@ -94,7 +135,7 @@
             <p>Gestionamos sus operaciones financieras con el rigor de la consultoría tradicional y la agilidad de los mercados cripto.</p>
             <a href="mailto:zelticarpartners@gmail.com" style="background: var(--dorado); color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block;">Consultar Servicio</a>
         </div>
-        <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=800&q=80" alt="Consultoría Zelticar Partners" class="hero-img">
+        <img src="zelticarpartners.jpg" alt="Zelticar Partners Tech" class="hero-img">
     </section>
 
     <section class="market-section" id="mercado">
@@ -127,10 +168,10 @@
                     </select>
                 </div>
             </div>
-            <div style="font-size: 1.5rem; margin-bottom: 20px;">⇅</div>
+            <div style="font-size: 1.5rem; margin-bottom: 20px; color: white;">⇅</div>
             <div class="input-group">
                 <label>Recibo (Estimado)</label>
-                <div class="input-wrapper" style="background: #1e242c;">
+                <div class="input-wrapper">
                     <input type="number" id="outputVal" readonly>
                     <select id="outputCurr" onchange="updateConvert()">
                         <option value="BTC" selected>BTC</option>
@@ -151,13 +192,13 @@
             <div class="legal-box-grey">
                 <h3>1. Información Legal (LSSI)</h3>
                 <p>De conformidad con la Ley 34/2002, de 11 de julio, de servicios de la sociedad de la información y de comercio electrónico, se informa que el titular de este sitio web es:</p>
-                <ul>
-                    <li><strong>Nombre completo:</strong> PRIETO SANCHEZ CARLOS</li>
-                    <li><strong>NIF:</strong> 12323904K</li>
-                    <li><strong>Dirección:</strong> Calle Arrabal 15, CP 47450, Pozal de Gallinas, Valladolid, España.</li>
-                    <li><strong>Correo electrónico:</strong> zelticarpartners@gmail.com</li>
-                    <li><strong>Teléfono:</strong> 686699428</li>
-                </ul>
+                <p>
+                    <strong>Nombre completo:</strong> CARLOS PRIETO SANCHEZ<br>
+                    <strong>NIF:</strong> 12323904K<br>
+                    <strong>Dirección:</strong> Calle Arrabal 15, CP 47450, Pozal de Gallinas, Valladolid, España.<br>
+                    <strong>Correo electrónico:</strong> zelticarpartners@gmail.com<br>
+                    <strong>Teléfono:</strong> 686699428
+                </p>
             </div>
 
             <h3>2. Condiciones de Servicio</h3>
@@ -185,14 +226,26 @@
     </section>
 
     <footer>
-        <p>&copy; 2026 Zelticar Partners |CARLOS PRIETO SANCHEZ (12323904K) | Pozal de Gallinas, Valladolid.</p>
+        <p>&copy; 2026 Zelticar Partners | CARLOS PRIETO SANCHEZ (12323904K) | Pozal de Gallinas, Valladolid.</p>
     </footer>
 
     <script>
         const cryptoRates = { EUR: 1, USD: 1.09, BTC: 0.000015, ETH: 0.00032, SOL: 0.0085 };
         function updateConvert() {
-            const val = document.getElementById('inputVal').value;
-            const from = document
-
-
-
+            const valInput = document.getElementById('inputVal').value;
+            const from = document.getElementById('inputCurr').value;
+            const to = document.getElementById('outputCurr').value;
+            const val = parseFloat(valInput);
+            if (!isNaN(val) && val > 0) {
+                const inEUR = val / cryptoRates[from];
+                const result = inEUR * cryptoRates[to];
+                const decimals = (to === 'BTC' || to === 'ETH' || to === 'SOL') ? 6 : 2;
+                document.getElementById('outputVal').value = result.toFixed(decimals);
+            } else {
+                document.getElementById('outputVal').value = "";
+            }
+        }
+        window.onload = updateConvert;
+    </script>
+</body>
+</html>
